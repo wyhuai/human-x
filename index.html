@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="HumanX: Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos">
+  <meta name="keywords" content="Robotics, Humanoids, Whole-Body Control, Learning from Video, HOI Imitation, Loco-Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HumanX</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- <link rel="icon" href="./favicon.ico"> -->
+
+  <meta property="og:site_name" content="HumanX: Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:title" content="HumanX: Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos" />
+  <meta property="og:description" content="by Yinhuai Wang*, Qihan Zhao*, Yuen Fui Lau*, Runyi Yu, Hok Wai Tsui, Qifeng Chen, Jingbo Wang, Jiangmiao Pang, and Ping Tan" />
+  <meta property="og:url" content="https://wyhuai.github.io/humanx/" />
+  <!-- <meta property="og:image" content="https://humanoid-ai.github.io/static/images/preview.gif" /> -->
+  <!-- <meta property="og:image:secure" content="https://humanoid-ai.github.io/static/images/preview.gif" /> -->
+  <meta property="og:video" content="" />
+  <meta property="og:video:secure" content="" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="720" />
+
+  <!-- <meta property="article:publisher" content="https://mobile-aloha.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HumanPlus: Humanoid Shadowing and Imitation from Humans" />
+  <meta name="twitter:description" content="by Zipeng Fu*, Qingqing Zhao*, Qi Wu*, Gordon Wetzstein, Chelsea Finn at Stanford" />
+  <meta name="twitter:url" content="https://humanoid-ai.github.io/" />
+  <meta name="twitter:image" content="https://humanoid-ai.github.io/static/images/preview.gif" />
+  <meta name="twitter:site" content="@zipengfu" />
+  <meta name="twitter:card" content="player" />
+  <meta name="twitter:player" content="" />
+  <meta name="twitter:player:width" content="1280" />
+  <meta name="twitter:player:height" content="720" /> -->
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-centered has-text-centered">
+          <h1 class="title is-1 publication-title">HumanX</h1>
+          <h2 class="subtitle is-2 publication-subtitle">Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://wyhuai.github.io/info/" target="_blank">Yinhuai Wang</a><sup>1,2</sup>*,
+              <a href="" target="_blank">Qihan Zhao</a><sup>1</sup>*,
+              <a href="" target="_blank">Yuen Fui Lau</a><sup>1</sup>*,
+              <a href="https://ingrid789.github.io/IngridYu/" target="_blank">Runyi Yu</a><sup>1</sup>,
+              <a href="" target="_blank">Hok Wai Tsui</a><sup>1</sup>,
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://cqf.io/" target="_blank">Qifeng Chen</a><sup>1</sup>†,
+              <a href="https://wangjingbo1219.github.io/" target="_blank">Jingbo Wang</a><sup>2</sup>†,
+              <a href="https://oceanpang.github.io/" target="_blank">Jiangmiao Pang</a><sup>2</sup>,
+              <a href="https://facultyprofiles.hkust.edu.hk/profiles.php?profile=ping-tan-pingtan" target="_blank">Ping Tan</a><sup>1</sup>†
+            </span>
+          </div>
+          <!-- <image src="./static/images/teaser_0.png" style="width: 60%;"></image> -->
+          <div class="is-size-5 publication-authors">
+            <sup>1</sup>HKUST, <sup>2</sup>Shanghai AI Lab
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span>* Equal contribution, † Corresponding Authors</span>
+          </div>
+          <div>
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="./HumanX.pdf"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- arXiv Link. -->
+              <!-- <span class="link-block">
+                <a href="http://arxiv.org/abs/2401.02117"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Tutorial Link. -->
+              <!-- <span class="link-block">
+                <a href="https://docs.google.com/document/d/1SOrTv9INAKD5Yd9oLjfND1N75sRkg6ILJWmE74H1zJ8" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-book"></i>
+                  </span>
+                  <span>Hardware</span>
+                </a>
+              </span> -->
+              <!-- Datasets Link. -->
+              <!-- <span class="link-block">
+                <a href="https://drive.google.com/drive/folders/1i3eGTd9Nl_tSieoE0grxuKqUAumBr2EV" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Datasets</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/wyhuai/humanx" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="./cn.html" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-language"></i>
+                  </span>
+                  <span>中文</span>
+                </a>
+              </span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="columns is-centered">
+        <div class="column is-two-thirds is-centered has-text-centered">
+          <video download controls autoplay loop muted playsinline src="./resources/mobile-aloha.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <image src="./static/images/teaser_0.png" style="width: 100%;"></image>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Abstract</h2>
+        
+        <div class="content has-text-justified">
+          <p>
+            Enabling humanoid robots to perform agile and adaptive interactive tasks has long been a core challenge in robotics. Current approaches are bottlenecked by either the scarcity of realistic interaction data or the need for meticulous, task-specific reward engineering, which limits their scalability. To narrow this gap, we present HumanX, a full-stack framework that compiles human video into generalizable, real-world interaction skills for humanoids, without task-specific rewards.
+HumanX integrates two co‑designed components: XGen, a data generation pipeline that synthesizes diverse and physically plausible robot interaction data from video while supporting scalable data augmentation; and XMimic, a unified imitation learning framework that learns generalizable interaction skills. Evaluated across five distinct domains—basketball, football, badminton, cargo pickup, and reactive fighting—HumanX successfully acquires 10 different skills and transfers them zero‑shot to a physical Unitree G1 humanoid. The learned capabilities include complex maneuvers such as pump‑fake turnaround fadeaway jumpshots without any external perception, as well as interactive tasks like sustained human‑robot passing sequences over 10 consecutive cycles—learned from a single video demonstration. Our experiments show that HumanX achieves over 8× higher generalization success than prior methods, demonstrating a scalable and task‑agnostic pathway for learning versatile, real‑world robot interactive  skills.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3" style="text-align: center;">Autonomous Interaction Skills (with MoCap Sensing)</h2>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/catchpass1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/kick.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/fight.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/catchpass2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/cargo2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/cargo1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3" style="text-align: center;">Autonomous Interaction Skills (No External Perception)</h2>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/jumpshot.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/layup.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/fakeaction.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/pass.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/dribble.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-one-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/autonomous/turn.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- <section class="section">
+  <div class="container">
+    <h2 class="title is-3" style="text-align: center;">Shadowing Human Motion</h2>
+    <div class="columns is-centered">
+      <div class="column is-three-fifths is-centered has-text-centered">
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/-7VvoXrUlbE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-two-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/shadowing/shadowing_boxing.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-two-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/shadowing/shadowing_piano.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-two-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/shadowing/shadowing_tossing.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-two-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/shadowing/shadowing_table_tennis.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-two-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/shadowing/shadowing_typing.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-two-fifths is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/shadowing/shadowing_kitchen.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3" style="text-align: center;">Team</h2>
+    <div class="columns is-centered">
+      <div class="column is-2 is-centered has-text-centered">
+        <a href="https://zipengfu.github.io" target="_blank" style="border-bottom: none;">
+          <span class="image" ><img src="./static/images/ZipengFu.jpeg" alt="" style="width: 70%; margin-left: auto; margin-right: auto;" /></span>
+        </a>
+        <span style="font-weight: bold; font-size: 100%;">
+          <a href="https://zipengfu.github.io" target="_blank" style="color: black;">
+            Zipeng Fu*
+          </a>
+        </span> <br>
+      </div>
+      <div class="column is-2 is-centered has-text-centered">
+        <a href="https://qingqing-zhao.github.io" target="_blank" style="border-bottom: none;">
+          <span class="image" ><img src="./static/images/QingqingZhao.jpeg" alt="" style="width: 70%; margin-left: auto; margin-right: auto;" /></span>
+        </a>
+        <span style="font-weight: bold; font-size: 100%;">
+          <a href="https://qingqing-zhao.github.io" target="_blank" style="color: black;">
+            Qingqing Zhao*
+          </a>
+        </span> <br>
+      </div>
+      <div class="column is-2 is-centered has-text-centered">
+        <a href="https://wooqi57.github.io" target="_blank" style="border-bottom: none;">
+          <span class="image" ><img src="./static/images/QiWu.jpeg" alt="" style="width: 70%; margin-left: auto; margin-right: auto;" /></span>
+        </a>
+        <span style="font-weight: bold; font-size: 100%;">
+          <a href="https://wooqi57.github.io" target="_blank" style="color: black;">
+            Qi Wu*
+          </a>
+        </span> <br>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-2 is-centered has-text-centered">
+        <a href="https://web.stanford.edu/~gordonwz/" target="_blank" style="border-bottom: none;">
+          <span class="image"><img src="./static/images/GordonWetzstein.jpeg" alt="" style="width: 70%; margin-left: auto; margin-right: auto;" /></span>
+        </a>
+        <span style="font-weight: bold; font-size: 100%;">
+          <a href="https://web.stanford.edu/~gordonwz/" target="_blank" style="color: black;">
+            Gordon Wetzstein
+          </a>
+        </span> <br>
+      </div>
+      <div class="column is-2 is-centered has-text-centered">
+        <a href="https://ai.stanford.edu/~cbfinn/" target="_blank" style="border-bottom: none;">
+          <span class="image"><img src="./static/images/ChelseaFinn.jpeg" alt="" style="width: 70%; margin-left: auto; margin-right: auto;" /></span>
+        </a>
+        <span style="font-weight: bold; font-size: 100%;">
+          <a href="https://ai.stanford.edu/~cbfinn/" target="_blank" style="color: black;">
+            Chelsea Finn
+          </a>
+        </span> <br>
+      </div>
+    </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Acknowledgements</h2>
+        <div class="content has-text-justified">
+          <p>
+            We thank Steve Cousins and Oussama Khatib at Stanford Robotics Center for providing facility support for our experiments. We also thank Inspire-Robots and Unitree Robotics for providing extensive supports on hardware and low-level firmware. We thank Huy Ha, Yihuai Gao, Chong Zhang, Ziwen Zhuang, Jiaman Li, Yifeng Jiang, Yuxiang Zhang, Xingxing Wang, Tony Yang, Walter Wen, Yunguo Cui, Rosy Wang, Zhiqiang Ma, Wei Yu, Xi Chen, Mengda Xu, Peizhuo Li, Tony Z. Zhao, Lucy X. Shi and <a href="https://www.instagram.com/bartie_foodie/" target="_blank">Bartie</a> for helps on experiments, valuable discussions and supports. This project is supported by The AI Institute and ONR grant N00014-21-1-2685. Zipeng Fu is supported by Pierre and Christine Lamond Fellowship. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-two-thirds">
+          <h2 class="title is-4">BibTeX</h2>
+    <pre><code>@inproceedings{fu2024humanplus,
+  author    = {Fu, Zipeng and Zhao, Qingqing and Wu, Qi and Wetzstein, Gordon and Finn, Chelsea},
+  title     = {HumanPlus: Humanoid Shadowing and Imitation from Humans},
+  booktitle = {{Conference on Robot Learning (CoRL)}},
+  year      = {2024},
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>Page template borrowed from <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span></a> and <a href="https://mobile-aloha.github.io/"><span class="dnerf">Mobile ALOHA</span></a>.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
